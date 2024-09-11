@@ -1,280 +1,373 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="utf-8">
-  <meta name="description"
-        content="Jailbreaking Black Box Large Language Models in Twenty Queries">
-  <meta name="keywords" content="Jailbreaking, LLMs, adversarial, prompting, red teaming">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Jailbreaking Black Box Large Language Models in Twenty Queries</title>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="description"
+      content="Jailbreaking Black Box Large Language Models in Twenty Queries"
+    />
+    <meta
+      name="keywords"
+      content="Jailbreaking, LLMs, adversarial, prompting, red teaming"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>
+      Jailbreaking Black Box Large Language Models in Twenty Queries
+    </title>
 
+    <script>
+      window.dataLayer = window.dataLayer || [];
 
-  <script>
-    window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
 
-    function gtag() {
-      dataLayer.push(arguments);
-    }
+      gtag("js", new Date());
 
-    gtag('js', new Date());
+      gtag("config", "G-PYVRSFMDRL");
+    </script>
 
-    gtag('config', 'G-PYVRSFMDRL');
-  </script>
+    <link
+      href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+      rel="stylesheet"
+    />
 
-  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
-        rel="stylesheet">
+    <link rel="stylesheet" href="./static/css/bulma.min.css" />
+    <link rel="stylesheet" href="./static/css/bulma-carousel.min.css" />
+    <link rel="stylesheet" href="./static/css/bulma-slider.min.css" />
+    <link rel="stylesheet" href="./static/css/fontawesome.all.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css"
+    />
+    <link rel="stylesheet" href="./static/css/index.css" />
+    <link rel="icon" href="./static/images/favicon.png" />
 
-  <link rel="stylesheet" href="./static/css/bulma.min.css">
-  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
-  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
-  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
-  <link rel="stylesheet"
-        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
-  <link rel="stylesheet" href="./static/css/index.css">
-  <link rel="icon" href="./static/images/favicon.png">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script defer src="./static/js/fontawesome.all.min.js"></script>
+    <script src="./static/js/bulma-carousel.min.js"></script>
+    <script src="./static/js/bulma-slider.min.js"></script>
+    <script src="./static/js/index.js"></script>
+  </head>
+  <body>
+    <section class="hero">
+      <div class="hero-body">
+        <div class="container is-max-desktop">
+          <div class="columns is-centered">
+            <div class="column has-text-centered">
+              <h1 class="title is-1 publication-title">
+                FP-VEC: Fingerprinting Large Language Models via Efficient
+                Vector Addition
+              </h1>
+              <div class="is-size-5 publication-authors">
+                <span class="author-block">
+                  <a
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://patrickrchao.github.io/"
+                    >Zhenhua Xu</a
+                  ><sup>1</sup>,</span
+                >
+                <span class="author-block">
+                  <a
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://arobey1.github.io/"
+                    >Wenpeng Xing</a
+                  ><sup>1</sup>,</span
+                >
+                <span class="author-block">
+                  <a
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://statistics.wharton.upenn.edu/profile/dobriban/"
+                    >Zhebo Wang</a
+                  ><sup>1</sup>,
+                </span>
+                <span class="author-block">
+                  <a
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://www.seas.upenn.edu/~hassani/"
+                    >Chang Hu</a
+                  ><sup>2</sup>,
+                </span>
+                <span class="author-block">
+                  <a
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://www.georgejpappas.org/"
+                    >Chen Jie</a
+                  ><sup>3</sup>,
+                </span>
+                <span class="author-block">
+                  <a
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://riceric22.github.io/"
+                    >Meng Han</a
+                  ><sup>1</sup>
+                </span>
+              </div>
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script defer src="./static/js/fontawesome.all.min.js"></script>
-  <script src="./static/js/bulma-carousel.min.js"></script>
-  <script src="./static/js/bulma-slider.min.js"></script>
-  <script src="./static/js/index.js"></script>
-</head>
-<body>
+              <div class="is-size-5 publication-authors">
+                <span class="author-block"
+                  ><sup>1</sup>Zhejiang University,<sup>2</sup>Hangzhou Dianzi
+                  University,<sup>3</sup>Hong Kong Baptist University</span
+                >
+              </div>
 
-
-
-<section class="hero">
-  <div class="hero-body">
-    <div class="container is-max-desktop">
-      <div class="columns is-centered">
-        <div class="column has-text-centered">
-          <h1 class="title is-1 publication-title">Jailbreaking Black Box Large Language Models in Twenty Queries</h1>
-          <div class="is-size-5 publication-authors">
-            <span class="author-block">
-              <a target="_blank" rel="noopener noreferrer" href="https://patrickrchao.github.io/">Patrick Chao</a>,</span>
-            <span class="author-block">
-              <a target="_blank" rel="noopener noreferrer" href="https://arobey1.github.io/">Alexander Robey</a>,</span>
-            <span class="author-block">
-              <a target="_blank" rel="noopener noreferrer" href="https://statistics.wharton.upenn.edu/profile/dobriban/">Edgar Dobriban</a>,
-            </span>
-            <span class="author-block">
-              <a target="_blank" rel="noopener noreferrer" href="https://www.seas.upenn.edu/~hassani/">Hamed Hassani</a>,
-            </span>
-            <span class="author-block">
-              <a target="_blank" rel="noopener noreferrer" href="https://www.georgejpappas.org/">George J. Pappas</a>,
-            </span>
-            <span class="author-block">
-              <a target="_blank" rel="noopener noreferrer" href="https://riceric22.github.io/">Eric Wong</a>
-            </span>
-          </div>
-
-          <div class="is-size-5 publication-authors">
-            <span class="author-block">University of Pennsylvania</span>
-          </div>
-
-          <div class="column has-text-centered">
-            <div class="publication-links">
-              <!-- PDF Link. -->
-              <span class="link-block">
-                <a target="_blank" rel="noopener noreferrer" href="https://arxiv.org/abs/2310.08419"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="fas fa-file-pdf"></i>
+              <div class="column has-text-centered">
+                <div class="publication-links">
+                  <!-- PDF Link. -->
+                  <span class="link-block">
+                    <a
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      href="https://arxiv.org/abs/2310.08419"
+                      class="external-link button is-normal is-rounded is-dark"
+                    >
+                      <span class="icon">
+                        <i class="fas fa-file-pdf"></i>
+                      </span>
+                      <span>Paper</span>
+                    </a>
                   </span>
-                  <span>Paper</span>
-                </a>
-              </span>
-              
-              <!-- Code Link. -->
-              <span class="link-block">
-                <a target="_blank" rel="noopener noreferrer" href="https://github.com/patrickrchao/JailbreakingLLMs"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="fab fa-github"></i>
+
+                  <!-- Code Link. -->
+                  <span class="link-block">
+                    <a
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      href="https://github.com/fingerprintvector/FP-VEC"
+                      class="external-link button is-normal is-rounded is-dark"
+                    >
+                      <span class="icon">
+                        <i class="fab fa-github"></i>
+                      </span>
+                      <span>Code</span>
+                    </a>
                   </span>
-                  <span>Code</span>
-                  </a>
-              </span>
-              
+                </div>
+              </div>
             </div>
-
           </div>
         </div>
       </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<section class="hero teaser">
-  <div class="container is-max-desktop">
-    <div class="hero-body">
-      <video id="teaser" autoplay controls muted loop playsinline height="100%">
-        <source src="./static/videos/overview_video.mp4"
-                type="video/mp4">
-      </video>
-      <h2 class="subtitle has-text-justified">
-        <span class="pair">PAIR</span> is the state-of-the-art procedure for efficiently generating interpretable jailbreaks, while only needing black box access.
-      </h2>
-    </div>
-  </div>
-</section>
-
-
-
-
-<br><br>
-<!-- Explanation video. -->
-<div class="columns is-centered has-text-centered">
-  <div class="column is-four-fifths">
-    <h2 class="title is-3">How does <span class="pair">PAIR</span> work?</h2>
-    <div class="content has-text-justified is-centered">
-      <p>
-        <span class="pair">PAIR</span> uses a separate attacker language model to generate jailbreaks on any target model. The attacker model receives a detailed system prompt, instructing it to operate as a red teaming assistant. <span class="pair">PAIR</span> utilizes <i>in-context learning</i> to iteratively refine the candidate prompt until a successful jailbreak by accumulating previous attempts and responses in the chat history. The attacker model also reflects upon the both prior prompt and target model's response to generate an "<i>improvement</i>" as a form of chain-of-thought reasoning, allowing the attacker model to explain its approach, as a form of model interpretablility.
-      </p>
-    </div>
-      <br>
-      
-      <div class="content has-text-centered">
-        <img src="./static/images/pair_example.jpg" style="width:800px;"
-        class="example-image"
-        alt="PAIR example."/>
-      </div>
-    <br><br>
-    <h2 class="title is-3">Explanation Video</h2>
-    <video id="explanation" controls muted loop playsinline height="100%">
-      <source src="./static/videos/explanation_video.mp4"
-              type="video/mp4">
-    </video>
-  </div>
-</div>
-<!--/ Paper video. -->
-
-<section class="section">
-  <div class="container is-max-desktop">
-    <!-- Abstract. -->
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Abstract</h2>
-        <div class="content has-text-justified">
-          <p>
-            There is growing interest in ensuring that large language models (LLMs) align with human values. However, the alignment of such models is vulnerable to adversarial jailbreaks, which coax LLMs into overriding their safety guardrails. The identification of these vulnerabilities is therefore instrumental in understanding inherent weaknesses and preventing future misuse. To this end, we propose <i>Prompt Automatic Iterative Refinement</i> (<span class="pair">PAIR</span>), an algorithm that generates semantic jailbreaks with only black-box access to an LLM. <span class="pair">PAIR</span> —which is inspired by social engineering attacks— uses an attacker LLM to automatically generate jailbreaks for a separate targeted LLM without human intervention. In this way, the attacker LLM iteratively queries the target LLM to update and refine a candidate jailbreak. Empirically, <span class="pair">PAIR</span> often requires fewer than twenty queries to produce a jailbreak, which is orders of magnitude more efficient than existing algorithms. <span class="pair">PAIR</span> also achieves competitive jailbreaking success rates and transferability on open and closed-source LLMs, including GPT-3.5/4, Vicuna, and PaLM-2. 
-          </p>
-        </div>
-      </div>
-    </div>
-    <!--/ Abstract. -->
-
-    
-  </div>
-</section>
-
-
-
-
-<br><br>
-<section class="hero is-small">
-  <div class="hero-body">
-    <div class="container has-text-centered">
-      <h2 class="title is-3">Examples</h2>
-      <div id="results-carousel" class="carousel results-carousel">
-        <div class="item item-claude2">
-          <img src="./static/images/claude_2.jpg" 
-          class="example-image"
-          alt="Claude-2 jailbreak example." id="Claude-2"/>
-        </div>
-        <div class="item item-gpt4">
-          <img src="./static/images/gpt_4_example.jpg"
-          class="example-image"
-          alt="GPT-4 jailbreak example."  id="GPT-4"/>
-        </div>
-        <div class="item item-gpt35">
-          <img src="./static/images/gpt_3_5_example.jpg"
-                 class="example-image"
-                 alt="GPT-3.5 jailbreak example"  id="GPT-3.5"/>
-        </div>
-        <div class="item item-palm2">
-          <img src="./static/images/palm_example.jpg" 
-          class="example-image"
-          alt="PaLM-2 jailbreak example." id = "PaLM-2" />
-        </div>
-        <div class="item item-claude1">
-          <img src="./static/images/claude_1_example.jpg" 
-          class="example-image"
-          alt="Claude-1 jailbreak example." id = "Claude-1" />
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-
-<section class="section">
-  <div class="container is-max-desktop">
-    <div class="columns is-centered">
-      <div class="column is-full-width has-text-centered">
-        <h2 class="title is-3">Results</h2>
-
-        <div class="content has-text-justified is-centered">
-          <p>
-           We evaluate the success rate of <span class="pair">PAIR</span> against the prior state-of-the-art for directly generating jailbreaks on a target model. Since <span class="pair">PAIR</span> does not require access to model weights, we can attack any language model with just API access. <span class="pair">PAIR</span> often succeeds with a few dozen queries, rather than hundreds of thousands.
-          </p>
-        </div>        
-          <div class="content has-text-centered">
-            <img src="./static/images/direct_attacks.png" style="width:800px;"
+    <section class="hero teaser">
+      <div class="container is-max-desktop">
+        <div class="content has-text-centered">
+          <img
+            src="./static/images/teaser.png"
+            style="width: 800px"
             class="result-image"
-            alt="Interpolation end reference image."/>
-          </div>
-          <br>
-          <div class="content has-text-justified is-centered">
-            <p>
-            From <span class="pair">PAIR</span>'s generated jailbreaks, we compare the transferability to different target models. <span class="pair">PAIR</span> achieves state-of-the-art transferability, with notably higher success with more complex models like GPT-4 (we omit transferring to the original target model).
-            </p>
-          </div>
-          <div class="content has-text-centered">
-            <img src="./static/images/transfer_attacks.png" style="width:800px;"
-            class="result-image"
-            alt="Interpolation end reference image."/>
-          </div>
-        
+            alt="Interpolation end reference image."
+          />
+        </div>
+        <div>
+          <h2 class="subtitle has-text-justified">
+            An illustration to FP-VEC. The blue arrows in the top left represent
+            the process of Fingerprint Transfer, while the gray arrow depicts
+            the derivation of the fingerprint vector. The dashed gray lines
+            indicate the steps involved in generating the downstream models.
+          </h2>
+        </div>
       </div>
-    </div>
-  </div>
-</section>
+    </section>
 
+    <br /><br />
 
-<section class="section" id="BibTeX">
-  <div class="container is-max-desktop content">
-    <h2 class="title">Contact</h2>
-    Please feel free to email us at <code>pchao@wharton.upenn.edu</code>. And if you find this work useful in your own research, please consider citing our work.
-    <pre><code>@misc{chao2023jailbreaking,
+    <section class="section">
+      <div class="container is-max-desktop">
+        <!-- Abstract. -->
+        <div class="columns is-centered has-text-centered">
+          <div class="column is-four-fifths">
+            <h2 class="title is-3">Abstract</h2>
+            <div class="content has-text-justified">
+              <p>
+                Training Large Language Models (LLMs) requires immense
+                computational power and vast amounts of data. As a result,
+                protecting the intellectual property of these models through
+                fingerprinting is essential for ownership authentication. While
+                adding fingerprints to LLMs through fine-tuning has been
+                attempted, it remains costly and unscalable. In this paper, we
+                introduce \model, a pilot study on using fingerprint vectors as
+                an efficient fingerprinting method for LLMs. Our approach
+                generates a fingerprint vector that represents a confidential
+                signature embedded in the model, allowing the same fingerprint
+                to be seamlessly incorporated into an unlimited number of LLMs
+                via vector addition. Results on several LLMs show that \model is
+                lightweight by running on CPU-only devices for fingerprinting,
+                scalable with a single training and unlimited fingerprinting
+                process, and preserves the model's normal behavior.
+              </p>
+            </div>
+          </div>
+        </div>
+        <!--/ Abstract. -->
+      </div>
+    </section>
+
+    <br /><br />
+    <section class="section">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column is-full-width has-text-centered">
+            <h2 class="title is-3">How does FP-VEC work?</h2>
+            <h3 class="title is-4">Fingerprint Vector Calculation (FVC)</h3>
+            <div class="content has-text-justified is-centered">
+              <p>
+                We calculate the fingerprint vector, denoted as τ ∈ Rd, by
+                subtracting the weights θbase of the base model Φbase from those
+                θf p of the fingerprinted model Φfp, represented as<br />τ = θf
+                p − θbase
+              </p>
+            </div>
+            <br />
+            <h3 class="title is-4">Fingerprint Transfer (FT)</h3>
+            <div class="content has-text-justified is-centered">
+              <p>
+                The fingerprint vector τ can be seamlessly applied to other
+                downstream models Φds derived from the same base model Φbase.
+                This is achieved by adding the fingerprint vector to the weights
+                of a downstream model, as follows:<br />
+                θstp = θds + τ<br />
+                where θstp represents the weights of the stamped model Φstp, and
+                θds represents the weights of the downstream model. This
+                straightforward addition introduces the same fingerprint without
+                the need for finetuning, making the approach highly scalable
+                across an unlimited number of models.
+              </p>
+            </div>
+            <br />
+            <div class="content has-text-centered">
+              <img
+                src="./static/images/theory.png"
+                style="width: 800px"
+                class="result-image"
+                alt="Interpolation end reference image."
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="section">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column is-full-width has-text-centered">
+            <h2 class="title is-3">EXPERIMENT RESULTS</h2>
+            <h3 class="title is-4">Effectiveness & Robustness Evaluation</h3>
+            <div class="content has-text-justified is-centered">
+              <p>
+                To evaluate the Effectiveness of FP-VEC, we calculated the FSR
+                FSR for both the fingerprinted models and the final stamped
+                models. Our experiments demonstrate that both category of models
+                consistently achieves a 100% FSR, con- firming the successful
+                embedding of the fingerprint in both base and downstream models.
+                Additionally, the stamped mod- els maintain strong resilience
+                against key-guessing attempts,highlighting their Robustness due
+                to the complexity of the fingerprint keys.
+              </p>
+            </div>
+            <br />
+            <h3 class="title is-4">Harmlessness Evaluation</h3>
+            <div class="content has-text-justified is-centered">
+              <p>
+                We further assessed the Harmlessness of FP-VEC on down- stream
+                models by utilizing the lm-harness-eval framework [22] to
+                compare their performance before and after incor- porating the
+                fingerprint vector. Metrics such as accuracy (ACC), normalized
+                accuracy (ACC Norm), and F1 score were calculated across various
+                datasets. The Evaluation Dataset includes ANLI R1, R2, R3 [23];
+                ARC-Challenge, ARC-Easy [24]; OpenBookQA [25]; Winogrande [26];
+                LogiQA [27]; SciQ [28]; CB [29]; CoLA [30]; RTE [31]; WiC [32];
+                WSC [33]; CoPA [34]; LAMBADA-Standard [35]; MultiRC [36]; ReCoRD
+                [37]; and BoolQ [38]. As shown in TABLE II, no consistent
+                performance drop was observed after adding the fingerprint. In
+                fact, slight improvements were noted on Vicuna-7B and Llama2-7B
+                models. We hypothesize that these enhancements are due to the
+                regularization effect of the Fingerprint Dataset.
+              </p>
+            </div>
+            <div class="content has-text-centered">
+              <img
+                src="./static/images/harmlessness.png"
+                style="width: 800px"
+                class="result-image"
+                alt="Interpolation end reference image."
+              />
+            </div>
+            <br />
+            <h3 class="title is-4">Efficiency Evaluation</h3>
+            <div class="content has-text-justified is-centered">
+              <p>
+                This evaluation examines the computational resources and time
+                required for the three main steps of FP-VEC: (1) fin-
+                gerprinting base model (Section IV-B), (2) fingerprint vector
+                calculation (Section IV-C), and (3) fingerprint transferring
+                (Section IV-D). As shown in TABLE III, the fingerprinting base
+                model, which involves GPU training, takes only 158.71 seconds at
+                a minimum on two NVIDIA A100 GPUs (80 GB). Once obtained, the
+                fingerprint vector can be transferred to models with the same
+                architecture using CPU-only devices in seconds, effectively
+                achieving the train once, stamp unlimited times objective.
+                Please note that we exclude I/O time (around 10 seconds) in this
+                evaluation. In comparison, WLM [7], Plmmark [8] and IF [5]
+                require finetuning on GPUs for stamping each model.
+              </p>
+            </div>
+            <div class="content has-text-centered">
+              <img
+                src="./static/images/efficiency.png"
+                style="width: 800px"
+                class="result-image"
+                alt="Interpolation end reference image."
+              />
+            </div>
+            <br />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="BibTeX">
+      <div class="container is-max-desktop content">
+        <h2 class="title">Contact</h2>
+        Please feel free to email us at <code>xuzhenhua0326@zju.edu.cn</code>.
+        And if you find this work useful in your own research, please consider
+        citing our work.
+        <!-- <pre><code>@misc{chao2023jailbreaking,
       title={Jailbreaking Black Box Large Language Models in Twenty Queries}, 
       author={Patrick Chao and Alexander Robey and Edgar Dobriban and Hamed Hassani and George J. Pappas and Eric Wong},
       year={2023},
       eprint={2310.08419},
       archivePrefix={arXiv},
       primaryClass={cs.LG}
-}</code></pre>
-  </div>
-</section>
+}</code></pre> -->
+      </div>
+    </section>
 
-
-<footer class="footer">
-  <div class="container">
-    
-    <div class="columns is-centered">
-      <div class="column is-8">
-        <div class="content">
-          
-          <p>
-            Website template borrowed from <a target="_blank" rel="noopener noreferrer" 
-              href="https://github.com/nerfies/nerfies.github.io">here</a>.
-          </p>
+    <footer class="footer">
+      <div class="container">
+        <div class="columns is-centered">
+          <div class="column is-8">
+            <div class="content">
+              <p>
+                Website template borrowed from
+                <a
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  href="https://github.com/nerfies/nerfies.github.io"
+                  >here</a
+                >.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
-</footer>
-
-</body>
+    </footer>
+  </body>
 </html>
