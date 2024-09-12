@@ -180,13 +180,22 @@
           />
         </div>
         <div>
-          <h2 class="subtitle has-text-justified">
-            Fig. 1: An illustration to FP-VEC. The blue arrows in the top left
-            represent the process of Fingerprint Transfer, while the gray arrow
-            depicts the derivation of the fingerprint vector. The dashed gray
-            lines indicate the steps involved in generating the downstream
-            models.
-          </h2>
+          <div class="content">
+            <p
+              style="
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: large;
+              "
+            >
+              Fig. 1: An illustration to FP-VEC. The blue arrows in the top left
+              represent the process of Fingerprint Transfer, while the gray
+              arrow depicts the derivation of the fingerprint vector. The dashed
+              gray lines indicate the steps involved in generating the
+              downstream models.
+            </p>
+          </div>
         </div>
       </div>
     </section>
@@ -216,6 +225,26 @@
                 lightweight by running on CPU-only devices for fingerprinting,
                 scalable with a single training and unlimited fingerprinting
                 process, and preserves the model's normal behavior.
+              </p>
+            </div>
+            <div class="content has-text-centered">
+              <img
+                src="./static/images/overallresult.png"
+                style="width: 800px"
+                class="result-image"
+                alt="Interpolation end reference image."
+              />
+            </div>
+            <div class="content has-text-justified is-centered">
+              <p
+                style="
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+                  font-size: large;
+                "
+              >
+                Table I: Properties Comparisons of Fingerprinting Methods.
               </p>
             </div>
             <div class="content has-text-centered">
@@ -337,19 +366,21 @@
               <p>
                 We further assessed the
                 <span class="harmlessness-color">Harmlessness</span> of FP-VEC
-                on down- stream models by utilizing the lm-harness-eval
-                framework [22] to compare their performance before and after
-                incorporating the fingerprint vector. Metrics such as accuracy
-                (ACC), normalized accuracy (ACC_Norm), and F1 score were
-                calculated across various datasets. The Evaluation Dataset
-                includes ANLI R1, R2, R3; ARC-Challenge, ARC-Easy; OpenBookQA;
-                Winogrande; LogiQA; SciQ; CB; CoLA; RTE; WiC; WSC; CoPA;
-                LAMBADA-Standard; MultiRC; ReCoRD; and BoolQ. As shown in TABLE
-                I, no consistent performance drop was observed after adding the
-                fingerprint. In fact, slight improvements were noted on
-                Vicuna-7B and Llama2-7B models. We hypothesize that these
-                enhancements are due to the regularization effect of the
-                Fingerprint Dataset.
+                on down- stream models by utilizing the
+                <a href="https://github.com/EleutherAI/lm-evaluation-harness"
+                  >lm-harness-eval framework</a
+                >
+                to compare their performance before and after incorporating the
+                fingerprint vector. Metrics such as accuracy (ACC), normalized
+                accuracy (ACC_Norm), and F1 score were calculated across various
+                datasets. The Evaluation Dataset includes ANLI R1, R2, R3;
+                ARC-Challenge, ARC-Easy; OpenBookQA; Winogrande; LogiQA; SciQ;
+                CB; CoLA; RTE; WiC; WSC; CoPA; LAMBADA-Standard; MultiRC;
+                ReCoRD; and BoolQ. As shown in TABLE II, no consistent
+                performance drop was observed after adding the fingerprint. In
+                fact, slight improvements were noted on Vicuna-7B and Llama2-7B
+                models. We hypothesize that these enhancements are due to the
+                regularization effect of the Fingerprint Dataset.
               </p>
             </div>
             <div class="content has-text-centered">
@@ -369,7 +400,7 @@
                   font-size: large;
                 "
               >
-                Table I:&nbsp;
+                Table II:&nbsp;
                 <span class="harmlessness-color">Harmlessness</span
                 >&nbsp;Evaluation of FP-VEC to Downstream LLMs.
               </p>
@@ -384,15 +415,20 @@
                 required for the three main steps of FP-VEC: (1) fin-
                 gerprinting base model (Section IV-B), (2) fingerprint vector
                 calculation (Section IV-C), and (3) fingerprint transferring
-                (Section IV-D). As shown in TABLE II, the fingerprinting base
+                (Section IV-D). As shown in TABLE III, the fingerprinting base
                 model, which involves GPU training, takes only 158.71 seconds at
                 a minimum on two NVIDIA A100 GPUs (80 GB). Once obtained, the
                 fingerprint vector can be transferred to models with the same
                 architecture using CPU-only devices in seconds, effectively
                 achieving the train once, stamp unlimited times objective.
                 Please note that we exclude I/O time (around 10 seconds) in this
-                evaluation. In comparison, WLM [7], Plmmark [8] and IF [5]
-                require finetuning on GPUs for stamping each model.
+                evaluation. In comparison,
+                <a href="https://arxiv.org/abs/2210.07543">WLM</a>,
+                <a href="https://ojs.aaai.org/index.php/AAAI/article/view/26750"
+                  >Plmmark</a
+                >
+                and <a href="https://arxiv.org/abs/2401.12255">IF</a> require
+                finetuning on GPUs for stamping each model.
               </p>
             </div>
             <div class="content has-text-centered">
@@ -412,7 +448,7 @@
                   font-size: large;
                 "
               >
-                Table II:&nbsp;
+                Table III:&nbsp;
                 <span class="efficiency-color">Efficiency</span>&nbsp;Evaluation
                 of FP-VEC on Different LLMs in seconds. $\nRightarrow$ indicates
                 not necessary.
