@@ -174,7 +174,7 @@
         <div class="content has-text-centered">
           <img
             src="./static/images/teaser.png"
-            style="width: 800px"
+            style="width: 600px"
             class="result-image"
             alt="Interpolation end reference image."
           />
@@ -189,11 +189,13 @@
                 font-size: large;
               "
             >
-              Fig. 1: An illustration to FP-VEC. The blue arrows in the top left
-              represent the process of Fingerprint Transfer, while the gray
-              arrow depicts the derivation of the fingerprint vector. The dashed
-              gray lines indicate the steps involved in generating the
-              downstream models.
+              Fig. 1: An illustration to FP-VEC. The blue arrows on the top left
+              illustrate the process of obtaining downstream models by
+              fine-tuning the base model on the target task. In contrast, the
+              gray arrow shows how we derive the fingerprint vector through
+              simple parameter subtraction. This fingerprint vector can then be
+              added to the downstream model, producing the stamped model, as
+              indicated by the gray arrow dash lines.
             </p>
           </div>
         </div>
