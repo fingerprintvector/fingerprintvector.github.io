@@ -14,7 +14,6 @@
     <title>
       FP-VEC: Fingerprinting Large Language Models via Efficient Vector Addition
     </title>
-
     <script>
       window.dataLayer = window.dataLayer || [];
 
@@ -32,6 +31,7 @@
       rel="stylesheet"
     />
 
+    <link rel="stylesheet" href="./static/css/color.css" />
     <link rel="stylesheet" href="./static/css/bulma.min.css" />
     <link rel="stylesheet" href="./static/css/bulma-carousel.min.css" />
     <link rel="stylesheet" href="./static/css/bulma-slider.min.css" />
@@ -48,6 +48,19 @@
     <script src="./static/js/bulma-carousel.min.js"></script>
     <script src="./static/js/bulma-slider.min.js"></script>
     <script src="./static/js/index.js"></script>
+    <script
+      type="text/javascript"
+      async
+      src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"
+    ></script>
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+          tex2jax: {
+              inlineMath: [['$','$'], ['\\(','\\)']],
+              processEscapes: true
+          }
+      });
+    </script>
   </head>
   <body>
     <section class="hero">
@@ -124,7 +137,7 @@
                     <a
                       target="_blank"
                       rel="noopener noreferrer"
-                      href="https://arxiv.org/abs/2310.08419"
+                      href=""
                       class="external-link button is-normal is-rounded is-dark"
                     >
                       <span class="icon">
@@ -168,10 +181,11 @@
         </div>
         <div>
           <h2 class="subtitle has-text-justified">
-            An illustration to FP-VEC. The blue arrows in the top left represent
-            the process of Fingerprint Transfer, while the gray arrow depicts
-            the derivation of the fingerprint vector. The dashed gray lines
-            indicate the steps involved in generating the downstream models.
+            Fig. 1: An illustration to FP-VEC. The blue arrows in the top left
+            represent the process of Fingerprint Transfer, while the gray arrow
+            depicts the derivation of the fingerprint vector. The dashed gray
+            lines indicate the steps involved in generating the downstream
+            models.
           </h2>
         </div>
       </div>
@@ -183,7 +197,7 @@
       <div class="container is-max-desktop">
         <!-- Abstract. -->
         <div class="columns is-centered has-text-centered">
-          <div class="column is-four-fifths">
+          <div class="column is-four-sixth">
             <h2 class="title is-3">Abstract</h2>
             <div class="content has-text-justified">
               <p>
@@ -193,15 +207,35 @@
                 fingerprinting is essential for ownership authentication. While
                 adding fingerprints to LLMs through fine-tuning has been
                 attempted, it remains costly and unscalable. In this paper, we
-                introduce \model, a pilot study on using fingerprint vectors as
+                introduce FP-VEC, a pilot study on using fingerprint vectors as
                 an efficient fingerprinting method for LLMs. Our approach
                 generates a fingerprint vector that represents a confidential
                 signature embedded in the model, allowing the same fingerprint
                 to be seamlessly incorporated into an unlimited number of LLMs
-                via vector addition. Results on several LLMs show that \model is
+                via vector addition. Results on several LLMs show that FP-VEC is
                 lightweight by running on CPU-only devices for fingerprinting,
                 scalable with a single training and unlimited fingerprinting
                 process, and preserves the model's normal behavior.
+              </p>
+            </div>
+            <div class="content has-text-centered">
+              <img
+                src="./static/images/fingerprintrecall.png"
+                style="width: 800px"
+                class="result-image"
+                alt="Interpolation end reference image."
+              />
+            </div>
+            <div class="content has-text-justified is-centered">
+              <p
+                style="
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+                  font-size: large;
+                "
+              >
+                Fig. 2: Illustration of a Successful Fingerprint Recall.
               </p>
             </div>
           </div>
@@ -219,26 +253,30 @@
             <h3 class="title is-4">Fingerprint Vector Calculation (FVC)</h3>
             <div class="content has-text-justified is-centered">
               <p>
-                We calculate the fingerprint vector, denoted as τ ∈ Rd, by
-                subtracting the weights θbase of the base model Φbase from those
-                θf p of the fingerprinted model Φfp, represented as<br />τ = θf
-                p − θbase
+                We calculate the fingerprint vector, denoted as $\tau \in R^d$,
+                by subtracting the weights $\theta_{base}$ of the base model
+                $\Phi_\text{base}$ from those $\theta_{fp}$ of the fingerprinted
+                model $\Phi_\text{fp}$, represented as
+                \begin{equation}\label{eq:cal_fp_vec} \tau = \theta_{fp} -
+                \theta_{base} \end{equation}
               </p>
             </div>
             <br />
             <h3 class="title is-4">Fingerprint Transfer (FT)</h3>
             <div class="content has-text-justified is-centered">
               <p>
-                The fingerprint vector τ can be seamlessly applied to other
-                downstream models Φds derived from the same base model Φbase.
-                This is achieved by adding the fingerprint vector to the weights
-                of a downstream model, as follows:<br />
-                θstp = θds + τ<br />
-                where θstp represents the weights of the stamped model Φstp, and
-                θds represents the weights of the downstream model. This
-                straightforward addition introduces the same fingerprint without
-                the need for finetuning, making the approach highly scalable
-                across an unlimited number of models.
+                The fingerprint vector $\tau$ can be seamlessly applied to other
+                downstream models $\Phi_\text{ds}$ derived from the same base
+                model $\Phi_\text{base}$. This is achieved by adding the
+                fingerprint vector to the weights of a downstream model, as
+                follows: \begin{equation}\label{eq } \theta_{\text{stp}} =
+                \theta_{\text{ds}} + \tau \end{equation} where
+                $\theta_{\text{stp}}$ represents the weights of the stamped
+                model $\Phi_\text{stp}$, and $\theta_{\text{ds}}$ represents the
+                weights of the downstream model. This straightforward addition
+                introduces the same fingerprint without the need for finetuning,
+                making the approach highly scalable across an unlimited number
+                of models.
               </p>
             </div>
             <br />
@@ -250,6 +288,19 @@
                 alt="Interpolation end reference image."
               />
             </div>
+            <div class="content has-text-justified is-centered">
+              <p
+                style="
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+                  font-size: large;
+                "
+              >
+                Fig. 3: An illustration showing how the fingerprint vector
+                functions.
+              </p>
+            </div>
           </div>
         </div>
       </div>
@@ -259,37 +310,46 @@
         <div class="columns is-centered">
           <div class="column is-full-width has-text-centered">
             <h2 class="title is-3">EXPERIMENT RESULTS</h2>
-            <h3 class="title is-4">Effectiveness & Robustness Evaluation</h3>
+            <h3 class="title is-4">
+              <span class="effectiveness-color">Effectiveness</span> &
+              <span class="robustness-color">Robustness</span> Evaluation
+            </h3>
             <div class="content has-text-justified is-centered">
               <p>
                 To evaluate the Effectiveness of FP-VEC, we calculated the FSR
-                FSR for both the fingerprinted models and the final stamped
-                models. Our experiments demonstrate that both category of models
-                consistently achieves a 100% FSR, con- firming the successful
-                embedding of the fingerprint in both base and downstream models.
-                Additionally, the stamped mod- els maintain strong resilience
-                against key-guessing attempts,highlighting their Robustness due
-                to the complexity of the fingerprint keys.
+                $\mathcal{F}_{\text{SR}}$ for both the fingerprinted models and
+                the final stamped models. Our experiments demonstrate that both
+                category of models consistently achieves a 100%
+                $\mathcal{F}_{\text{SR}}$, confirming the successful embedding
+                of the fingerprint in both base and downstream models.
+                Additionally, the stamped models maintain strong resilience
+                against key-guessing attempts, highlighting their
+                <span class="robustness-color">robustness</span>
+                due to the complexity of the fingerprint keys.
               </p>
             </div>
             <br />
-            <h3 class="title is-4">Harmlessness Evaluation</h3>
+            <h3 class="title is-4">
+              <span class="harmlessness-color">Harmlessness</span>
+              Evaluation
+            </h3>
             <div class="content has-text-justified is-centered">
               <p>
-                We further assessed the Harmlessness of FP-VEC on down- stream
-                models by utilizing the lm-harness-eval framework [22] to
-                compare their performance before and after incor- porating the
-                fingerprint vector. Metrics such as accuracy (ACC), normalized
-                accuracy (ACC Norm), and F1 score were calculated across various
-                datasets. The Evaluation Dataset includes ANLI R1, R2, R3 [23];
-                ARC-Challenge, ARC-Easy [24]; OpenBookQA [25]; Winogrande [26];
-                LogiQA [27]; SciQ [28]; CB [29]; CoLA [30]; RTE [31]; WiC [32];
-                WSC [33]; CoPA [34]; LAMBADA-Standard [35]; MultiRC [36]; ReCoRD
-                [37]; and BoolQ [38]. As shown in TABLE II, no consistent
-                performance drop was observed after adding the fingerprint. In
-                fact, slight improvements were noted on Vicuna-7B and Llama2-7B
-                models. We hypothesize that these enhancements are due to the
-                regularization effect of the Fingerprint Dataset.
+                We further assessed the
+                <span class="harmlessness-color">Harmlessness</span> of FP-VEC
+                on down- stream models by utilizing the lm-harness-eval
+                framework [22] to compare their performance before and after
+                incorporating the fingerprint vector. Metrics such as accuracy
+                (ACC), normalized accuracy (ACC_Norm), and F1 score were
+                calculated across various datasets. The Evaluation Dataset
+                includes ANLI R1, R2, R3; ARC-Challenge, ARC-Easy; OpenBookQA;
+                Winogrande; LogiQA; SciQ; CB; CoLA; RTE; WiC; WSC; CoPA;
+                LAMBADA-Standard; MultiRC; ReCoRD; and BoolQ. As shown in TABLE
+                I, no consistent performance drop was observed after adding the
+                fingerprint. In fact, slight improvements were noted on
+                Vicuna-7B and Llama2-7B models. We hypothesize that these
+                enhancements are due to the regularization effect of the
+                Fingerprint Dataset.
               </p>
             </div>
             <div class="content has-text-centered">
@@ -300,15 +360,31 @@
                 alt="Interpolation end reference image."
               />
             </div>
+            <div class="content has-text-justified is-centered">
+              <p
+                style="
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+                  font-size: large;
+                "
+              >
+                Table I:&nbsp;
+                <span class="harmlessness-color">Harmlessness</span
+                >&nbsp;Evaluation of FP-VEC to Downstream LLMs.
+              </p>
+            </div>
             <br />
-            <h3 class="title is-4">Efficiency Evaluation</h3>
+            <h3 class="title is-4">
+              <span class="efficiency-color">Efficiency</span> Evaluation
+            </h3>
             <div class="content has-text-justified is-centered">
               <p>
                 This evaluation examines the computational resources and time
                 required for the three main steps of FP-VEC: (1) fin-
                 gerprinting base model (Section IV-B), (2) fingerprint vector
                 calculation (Section IV-C), and (3) fingerprint transferring
-                (Section IV-D). As shown in TABLE III, the fingerprinting base
+                (Section IV-D). As shown in TABLE II, the fingerprinting base
                 model, which involves GPU training, takes only 158.71 seconds at
                 a minimum on two NVIDIA A100 GPUs (80 GB). Once obtained, the
                 fingerprint vector can be transferred to models with the same
@@ -326,6 +402,21 @@
                 class="result-image"
                 alt="Interpolation end reference image."
               />
+            </div>
+            <div class="content has-text-justified is-centered">
+              <p
+                style="
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+                  font-size: large;
+                "
+              >
+                Table II:&nbsp;
+                <span class="efficiency-color">Efficiency</span>&nbsp;Evaluation
+                of FP-VEC on Different LLMs in seconds. $\nRightarrow$ indicates
+                not necessary.
+              </p>
             </div>
             <br />
           </div>
